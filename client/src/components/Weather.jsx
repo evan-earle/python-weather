@@ -30,7 +30,8 @@ const Weather = () => {
   return (
     <div className="flex flex-col w-1/2 mx-auto items-center p-6 rounded-2xl shadow-lg  gap-5 bg-gray-800 text-white">
       <h1 className="flex justify-center text-2xl">
-        Python/React&nbsp; <span className="text-blue-400">Weather App</span>
+        Python/React&nbsp;{" "}
+        <span className="text-blue-400">Weather App (°C)</span>
       </h1>
       <input
         type="text"
