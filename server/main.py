@@ -12,6 +12,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend requests
 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast"
 
 @app.route('/api/weather', methods=['GET'])
 def get_weather():
@@ -25,14 +26,17 @@ def get_weather():
         "units": "metric"  # Use "imperial" for Fahrenheit
     }
     
-    response = requests.get(BASE_URL, params=params)
+    current_response = requests.get(BASE_URL, params=params)
+    forecast_response = requests.get(FORECAST_URL, params=params)
     
-    if response.status_code == 200:
-        data = response.json()
-        return jsonify(data)
-       
+    if current_response.status_code == 200 and forecast_response.status_code == 200:
+        return jsonify({
+            "current": current_response.json(),
+            "forecast": forecast_response.json()
+        })
+    
     else:
-        return jsonify({"error": "City not found or API request failed."}), response.status_code
+        return jsonify({"error": "City not found or API request failed."}), 400
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
