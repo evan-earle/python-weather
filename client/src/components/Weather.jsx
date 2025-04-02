@@ -38,11 +38,11 @@ const Weather = () => {
         placeholder="Enter city name"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        className="w-full text-center p-2 rounded-md bg-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="w-2/3 text-center p-2 rounded-md bg-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
       <button
         onClick={fetchAPI}
-        className="w-1/2 mt-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="w-1/4 mt-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
       >
         Get Weather
       </button>
